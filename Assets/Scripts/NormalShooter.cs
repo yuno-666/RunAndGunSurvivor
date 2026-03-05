@@ -50,6 +50,7 @@ public class NormalShooter : MonoBehaviour
 
     void Start()
     {
-
+        //指定したタグを持っているオブジェクトを取得
+       bullets = GameObject.FindGameObjectWithTag("bullets");
     }
 }
