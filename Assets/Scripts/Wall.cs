@@ -42,6 +42,7 @@ public class Wall : MonoBehaviour
     {
         //ダメージコルーチン中はキャンセル
         if (currentDamage != null) return;
+
         //衝突相手がbulletタグをもつ場合
         if (other.gameObject.tag == "Billet")
         {
@@ -52,9 +53,11 @@ public class Wall : MonoBehaviour
                 CreateEffect();
             }
         }
+    }
 
-        //ダメージコルーチン
-        IEnumerator DamageCol()
+
+    //ダメージコルーチン
+    IEnumerator DamageCol()
         {
             life--;//体力減少
             yield return new WaitForSeconds(damageTime);
@@ -64,14 +67,15 @@ public class Wall : MonoBehaviour
             //振動していたボディをもとの位置に戻す
             damageBody.transform.localPosition = new Vector3(0, 0, 0);
         }
-    }
 
     public void CreateEffect()
     {
         if (effectPrefab != null)
         {
             //エフェクトプレハブの生成
-            Instantiate(effectPrefab, transform.position, Quaternion.identity);
+            Instantiate(effectPrefab,
+                transform.position, 
+                Quaternion.identity);
         }
         //Wall自身の削除
         Destroy(gameObject);

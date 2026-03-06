@@ -9,7 +9,7 @@ public class PlayerFollow : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        diff = target.transform.position - target.transform.position;
+        diff = target.transform.position - transform.position;
     }
 
     // Update is called once per frame
@@ -18,6 +18,6 @@ public class PlayerFollow : MonoBehaviour
         transform.position = Vector3.Lerp(
             transform.position,
             target.transform.position - diff,
-            followSpeed * Time.deltaTime);
+            Time.deltaTime * followSpeed );
     }
 }
